@@ -54,7 +54,7 @@ class OLED_GIF:
             "event": self.event,
             "value_optional": True,
             "handlers": [{
-                "device-type": "screened-128x52",
+                "device-type": "screened-128x48",
                 "mode": "screen",
                 "zone": "one",
                 "datas": [{
@@ -76,7 +76,7 @@ class OLED_GIF:
             "event": self.event,
             "data": {
                 "frame": {
-                    "image-data-128x52": bitmap
+                    "image-data-128x48": bitmap
                 }
             }
         }
@@ -175,14 +175,14 @@ def processGIF(gif_path, invert):
 
         
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        frame = cv2.resize(frame, (128, 52), interpolation=cv2.INTER_CUBIC)
+        frame = cv2.resize(frame, (128, 48), interpolation=cv2.INTER_CUBIC)
         _, frame = cv2.threshold(frame, 128, 1, method)
         
 
         bytemap = [0] * 832
         index = 0
 
-        for y in range(52):
+        for y in range(48):
             byte = 0
             for x in range(128):
                 pixel = int(frame[y,x])
